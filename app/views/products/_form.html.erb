@@ -1,0 +1,54 @@
+<%= form_with(model: product) do |form| %>
+  <% if product.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+      <ul>
+        <% product.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name  %>
+  </div>
+
+  <div>
+    <%= form.label :price, style: "display: block" %>
+    <%= form.text_field :price %>
+  </div>
+
+  <div>
+    <table>
+      <tr>
+        <%= form.label :status, style: "display: block" %> &nbsp <%= form.label :categorie_id, style: "display: block" %>
+        <%#= form.text_field :status %>
+        <%= form.select :status, [['Active', 'Active'], ['Inactive', 'Inactive'], ['Draft', 'Draft']] %>
+        <%#= select_tag(:active, options_for_select([['Active', true], ['Inactive', false], ['Draft', '']], params[:status]), :prompt => 'Status') %>
+        &nbsp
+        <%= form.collection_select :categorie_id, Categorie.all, :id, :name %>  
+      </tr>
+    </table>
+  </div>
+
+  <div>
+    <%= form.label :image, style: "display: block" %>
+    <%= form.file_field :image %>
+  </div>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_field :description %>
+  </div>
+  
+  <div>
+    <%= form.label :merchant_id, style: "display: block" %>
+    <%= form.collection_select :merchant_id, Merchant.all, :id, :email %> 
+  </div>
+  
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

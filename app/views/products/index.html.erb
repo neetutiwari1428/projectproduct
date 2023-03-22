@@ -1,0 +1,35 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Products</h1>
+
+
+<div id="products">
+  <% @products.each do |product| %>
+    <%#= render product %>
+    <p>
+      <%#= link_to "Show this product", product %>
+      <%= link_to product.name, product %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New product", new_product_path %>
+
+
+<%# <form action="/products">
+  <label>Filter:</label>
+  <select >
+    <option>Active</option>
+    <option>Inactive</option>
+  </select>
+</form> %>
+<%# 
+<form action="/products">
+  <label>Filter:</label>
+  <select >
+  <input type="text" id="name" name="status">
+    <option>Active</option>
+    <option>Inactive</option>
+  </select>
+  <input type="submit" value="Filter">
+</form> %>
