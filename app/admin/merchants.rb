@@ -21,18 +21,21 @@ ActiveAdmin.register Merchant do
     column :name 
     column :email
     column :password
+    
     actions
   end
 
   filter :name 
   filter :email
   filter :password
+  
 
   form do |f|
     f.inputs do
       f.input :name
       f.input :email
       f.input :password
+      
     end
     f.actions
   end

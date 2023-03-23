@@ -28,7 +28,7 @@
       <%= image_tag productimage.image.url, size:10*10 %>
     <% end %>
   </p>
-
+  
   <p>
     <strong>Description:</strong>
     <%= product.description %>
@@ -37,6 +37,6 @@
   <p>
     <strong>Merchant:</strong>
     <%= Merchant.find(product.merchant_id).email %>
-  </p>
+  </p> 
   
 </div>

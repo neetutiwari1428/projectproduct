@@ -1,12 +1,6 @@
 Rails.application.routes.draw do
-  resources :productimages
-  # get 'productsactives/index'
-  # get 'productsactives/show'
-  # get 'productsactives/edit'
-  # get 'productsactives/new'
   resources :productdactives
   devise_for :merchants
-  resources :products
   resources :idproofs
   resources :merchants
   resources :categories
@@ -18,4 +12,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   # root "merchants#index"
   root "idproofs#index"
+  resources :products do
+    resources :productimages
+  end 
 end

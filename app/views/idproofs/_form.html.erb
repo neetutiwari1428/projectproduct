@@ -11,6 +11,11 @@
     </div>
   <% end %>
 
+  <%# <div>
+    <%#= form.label :merchant_id, style: "display: block" %>
+    <%#= form.collection_select :merchant_id, Merchant.all, :id, :email %> 
+  <%# </div> %>
+
   <div>
     <%= form.label :name, style: "display: block" %>
     <%= form.text_field :name %>
@@ -25,11 +30,6 @@
     <%= form.label :status, style: "display: block" %>
     <%#= form.text_field :status %>
     <%= form.select :status, [['pending', 'pending'], ['accept', 'accept'], ['reject', 'reject']] %>
-  </div>
-
-  <div>
-    <%= form.label :merchant_id, style: "display: block" %>
-    <%= form.collection_select :merchant_id, Merchant.all, :id, :email %> 
   </div>
 
   <div>
