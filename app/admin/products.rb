@@ -14,7 +14,7 @@ ActiveAdmin.register Product do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  permit_params :categorie_id, :name ,:description,:image,:price ,:status
+  permit_params :categorie_id, :name ,:description,:image,:price ,:status,:merchant_id
   index do
     selectable_column
     id_column
@@ -24,6 +24,7 @@ ActiveAdmin.register Product do
     column :image
     column :price
     column :status
+    column :merchant_id
     actions
   end
   filter :categorie_id
@@ -32,6 +33,7 @@ ActiveAdmin.register Product do
   filter :image
   filter :price
   filter :status
+  filter :merchant_id
   
   form do |f|
     f.inputs do 
@@ -41,6 +43,7 @@ ActiveAdmin.register Product do
       f.input :price
       f.input :image,as: :file
       f.input :status,as: :select,:collection => (["active","inactive","draft"])
+      f.input :merchant_id
     end
     f.actions
   end

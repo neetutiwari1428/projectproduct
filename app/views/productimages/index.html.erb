@@ -6,7 +6,7 @@
   <% @productimages.each do |productimage| %>
     <%= render productimage %>
     <p>
-      <%#= link_to "Show this productimage", productimage %>  
+      <%#= link_to "Show this productimage",product_productimage_path(@product,productimage) %>  
     </p>
   <% end %>
 </div>

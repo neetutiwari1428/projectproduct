@@ -1,5 +1,10 @@
 <div id="<%= dom_id product %>">
-
+  
+  <p>
+    <strong>Merchant:</strong>
+    <%= Merchant.find(product.merchant_id).email %>
+  </p> 
+  
   <p>
     <strong>Name:</strong>
     <%= product.name %>
@@ -21,22 +26,18 @@
     <%= product.categorie.name %>
   </p>
 
-  <p>
-    <strong>Image:</strong>
-    <img src="<%= product.image %>" style = "width:10% ">
-    <% @product.productimage.each do |productimage| %>
-      <%= image_tag productimage.image.url, size:10*10 %>
-    <% end %>
-  </p>
-  
-  <p>
+    
+  <p> 
     <strong>Description:</strong>
     <%= product.description %>
   </p>
   
+  <%= render 'productimages/form' %>
+
   <p>
-    <strong>Merchant:</strong>
-    <%= Merchant.find(product.merchant_id).email %>
-  </p> 
+    <strong>Image:</strong>
+    <img src="<%= product.image %>" style = "width:10% ">
+  </p>
+
   
 </div>

@@ -1,8 +1,17 @@
-<p style="color: green"><%= notice %></p>
+<html>
+<head>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
 
-<h1>Products</h1>
 
-
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+<!--Shopping-->
+<% @products.each.slice(2) do |p| %>
+  <%= render partial:'shopping' %>
+<% end %>
+<!--End of Shopping-->
 <div id="products">
   <% @products.each do |product| %>
     <%#= render product %>
@@ -15,21 +24,4 @@
 
 <%= link_to "New product", new_product_path %>
 
-
-<%# <form action="/products">
-  <label>Filter:</label>
-  <select >
-    <option>Active</option>
-    <option>Inactive</option>
-  </select>
-</form> %>
-<%# 
-<form action="/products">
-  <label>Filter:</label>
-  <select >
-  <input type="text" id="name" name="status">
-    <option>Active</option>
-    <option>Inactive</option>
-  </select>
-  <input type="submit" value="Filter">
-</form> %>
+</html>

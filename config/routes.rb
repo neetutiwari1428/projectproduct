@@ -11,7 +11,12 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   # root "merchants#index"
-  root "idproofs#index"
+
+  # delete '/productimages/remove_image/:id' => 'productimages#remove_image', as: :remove_image
+
+  # root "idproofs#index"
+  root "products#index"
+  
   resources :products do
     resources :productimages
   end 

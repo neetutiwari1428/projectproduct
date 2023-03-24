@@ -1,14 +1,15 @@
 <div id="<%= dom_id productimage %>">
- 
-
+<%#= link_to "Edit Image", new_product_productimage_path(@productimage) %><br>
+<%#= link_to "Remove Image",product_productimage_path %>
   <p>
-    <strong>Product:</strong>
-    <%= productimage.product_id %>
+    <strong>Product_id:</strong>
+    <%= productimage.product_id %><br>
+    <img src="<%= productimage.image %> " style = "width:10% ">
   </p>
-
-  <p>
-    <strong>Image:</strong>
-    <img src= "<%= productimage.image %>">
-  </p>
-
+  <%# @product.productimage.each do |p| %>
+    <%# <img src="<%= p.image %>
+  <%# end %>
+  <%# if productimage.image.exists? %>
+  <%# end %>
 </div>
+
