@@ -7,17 +7,19 @@
 
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
 <!--Shopping-->
-<% @products.each.slice(2) do |p| %>
-  <%= render partial:'shopping' %>
+<% @products.each_slice(3).each do |p| %>
+  <%= render 'shopping',shopping: p %>
 <% end %>
 <!--End of Shopping-->
+
 <div id="products">
   <% @products.each do |product| %>
     <%#= render product %>
     <p>
       <%#= link_to "Show this product", product %>
-      <%= link_to product.name, product %>
+      <%#= link_to product.name, product %>
     </p>
   <% end %>
 </div>

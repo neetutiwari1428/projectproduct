@@ -1,0 +1,104 @@
+<div class="container wrapper">
+  <div class="row cart-body">
+    <form class="form-horizontal" method="post" action="">
+      <div
+        class=""
+      >
+        <!--REVIEW ORDER-->
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            Review Order
+          </div>
+          <div class="panel-body">
+          <% @itemcarts.each do |i| %>
+            <div class="form-group">
+              <div class="col-sm-3 col-xs-3">
+                <img
+                  class="img-responsive"
+                  src="<%= i.product.image %>"
+                />
+              </div>
+              <div class="col-sm-6 col-xs-6">
+                <div class="col-xs-12"><a href="itemcarts/<%= i.id %>"><%= i&.product&.name %></div>
+                <div class="col-xs-12">
+                  <small>Quantity:<span><%= i.qnty %></span></small>
+                  <small>Size:<span><%= i.size %></span></small>
+                </div>
+              </div>
+              <div class="col-sm-3 col-xs-3 text-right">
+                <h6><span>$</span><%= i&.product&.price %></h6>
+              <p><%= link_to "Remove",remove_item_itemcart_path(i) %></p>
+              <p><%#= link_to "Remove","/products/#{i.product_id}/itemcarts", method: :delete %></p>
+              <p><%#= link_to "Remove", @itemcart, method: :delete %></p>
+              <p><%= link_to "Order",orders_itemcart_path(i) %></p>
+              <p><%#= link_to "Wishlist", wishlists_product_path(i) %></p>
+              <a href="/products/<%= i.product.id %>/wishlists">Wishlist</a>
+              </div>
+            </div>
+            <% end %>
+            <%# <div class="form-group"><hr /></div> %>
+            <%# <div class="form-group">
+              <div class="col-sm-3 col-xs-3">
+                <img
+                  class="img-responsive"
+                  src="https://c1.staticflickr.com/1/466/19681864394_c332ae87df_t.jpg"
+                />
+              </div>
+              <div class="col-sm-6 col-xs-6">
+                <div class="col-xs-12">Product name</div>
+                <div class="col-xs-12">
+                  <small>Quantity:<span>1</span></small>
+                </div>
+              </div>
+              <div class="col-sm-3 col-xs-3 text-right">
+                <h6><span>$</span>25.00</h6>
+              </div>
+            </div> %>
+            <%# <div class="form-group"><hr /></div> %>
+            <%# <div class="form-group">
+              <div class="col-sm-3 col-xs-3">
+                <img
+                  class="img-responsive"
+                  src="https://c1.staticflickr.com/1/466/19681864394_c332ae87df_t.jpg"
+                />
+              </div>
+              <div class="col-sm-6 col-xs-6">
+                <div class="col-xs-12">Product name</div>
+                <div class="col-xs-12">
+                  <small>Quantity:<span>2</span></small>
+                </div>
+              </div>
+              <div class="col-sm-3 col-xs-3 text-right">
+                <h6><span>$</span>50.00</h6>
+              </div>
+            </div> %>
+            <div class="form-group"><hr /></div>
+            <div class="form-group">
+              <div class="col-xs-12">
+                <strong>Subtotal</strong>
+                <div class="pull-right"><span>$</span><span>200.00</span></div>
+              </div>
+              <div class="col-xs-12">
+                <small>Shipping</small>
+                <div class="pull-right"><span>-</span></div>
+              </div>
+            </div>
+            <div class="form-group"><hr /></div>
+            <div class="form-group">
+              <div class="col-xs-12">
+                <strong>Order Total</strong>
+                <div class="pull-right"><span>$</span><span>150.00</span></div>
+              </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-12">
+                  <div class="pull-right"><span></span><span><a class="btn-primary btn" href="">Checkout</a></span></div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+​

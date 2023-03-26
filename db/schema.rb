@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_22_015818) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_26_001720) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -37,6 +37,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_22_015818) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "carts", force: :cascade do |t|
+    t.integer "merchant_id", null: false
+    t.integer "qty"
+    t.string "size"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "product_id", null: false
+    t.index ["merchant_id"], name: "index_carts_on_merchant_id"
+    t.index ["product_id"], name: "index_carts_on_product_id"
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.string "image"
@@ -54,6 +65,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_22_015818) do
     t.index ["merchant_id"], name: "index_idproofs_on_merchant_id"
   end
 
+  create_table "itemcarts", force: :cascade do |t|
+    t.integer "qnty"
+    t.string "size"
+    t.integer "product_id", null: false
+    t.integer "merchant_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["merchant_id"], name: "index_itemcarts_on_merchant_id"
+    t.index ["product_id"], name: "index_itemcarts_on_product_id"
+  end
+
   create_table "merchants", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -65,6 +87,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_22_015818) do
     t.datetime "remember_created_at"
     t.index ["email"], name: "index_merchants_on_email", unique: true
     t.index ["reset_password_token"], name: "index_merchants_on_reset_password_token", unique: true
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "status"
+    t.integer "merchant_id", null: false
+    t.integer "product_id", null: false
+    t.integer "itemcart_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["itemcart_id"], name: "index_orders_on_itemcart_id"
+    t.index ["merchant_id"], name: "index_orders_on_merchant_id"
+    t.index ["product_id"], name: "index_orders_on_product_id"
   end
 
   create_table "productimages", force: :cascade do |t|
@@ -89,8 +123,26 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_22_015818) do
     t.index ["merchant_id"], name: "index_products_on_merchant_id"
   end
 
+  create_table "wishlists", force: :cascade do |t|
+    t.integer "product_id", null: false
+    t.integer "merchant_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["merchant_id"], name: "index_wishlists_on_merchant_id"
+    t.index ["product_id"], name: "index_wishlists_on_product_id"
+  end
+
+  add_foreign_key "carts", "merchants"
+  add_foreign_key "carts", "products"
   add_foreign_key "idproofs", "merchants"
+  add_foreign_key "itemcarts", "merchants"
+  add_foreign_key "itemcarts", "products"
+  add_foreign_key "orders", "itemcarts"
+  add_foreign_key "orders", "merchants"
+  add_foreign_key "orders", "products"
   add_foreign_key "productimages", "products"
   add_foreign_key "products", "categories", column: "categorie_id"
   add_foreign_key "products", "merchants"
+  add_foreign_key "wishlists", "merchants"
+  add_foreign_key "wishlists", "products"
 end

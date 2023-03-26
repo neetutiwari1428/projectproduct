@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
-  resources :productdactives
+  resources :wishlists
+  resources :orders
+  resources :itemcarts do
+    member do
+      get :orders, to: 'orders#create'
+      get :remove_item, to: 'itemcarts#destroy'
+    end
+  end
   devise_for :merchants
   resources :idproofs
   resources :merchants
@@ -16,8 +23,12 @@ Rails.application.routes.draw do
 
   # root "idproofs#index"
   root "products#index"
-  
+
   resources :products do
+  member do 
+    get :wishlists, to: 'wishlists#create'
+    get :itemcarts, to: 'itemcarts#cart'
+  end
     resources :productimages
   end 
 end

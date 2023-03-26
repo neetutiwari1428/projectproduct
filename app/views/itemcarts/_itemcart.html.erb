@@ -1,0 +1,22 @@
+<div id="<%= dom_id itemcart %>">
+  <p>
+    <strong>Qnty:</strong>
+    <%= itemcart.qnty %>
+  </p>
+
+  <p>
+    <strong>Size:</strong>
+    <%= itemcart.size %>
+  </p>
+
+  <p>
+    <strong>Product:</strong>
+    <%= itemcart.product_id %>
+  </p>
+
+  <p>
+    <strong>Merchant:</strong>
+    <%= Merchant.find(itemcart.merchant_id).email %>
+  </p>
+  
+</div>

@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  qnty: 1
+  size: MyString
+  product: one
+  merchant: one
+
+two:
+  qnty: 1
+  size: MyString
+  product: two
+  merchant: two

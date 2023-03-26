@@ -1,4 +1,5 @@
-<%= form_with model: [@product, productimage] do |form| %>
+<%= form_with model: [@product, @product.productimage.build] do |form| %>
+<%#= form_with model: [@product, productimage] do |form| %>
   <div>
     <%= form.label :add_image, style: "display: block" %>
     <%= form.file_field :image %><%= form.submit "save" %>

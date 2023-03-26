@@ -1,0 +1,18 @@
+<%= form_with(model: itemcart) do |form| %>
+ 
+  <div>
+    <%= form.label :qnty, style: "display: block" %>
+    <%= form.number_field :qnty %>
+  </div>
+
+  <div>
+    <%= form.label :size, style: "display: block" %>
+    <%= form.text_field :size %>
+  </div>
+
+  
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
